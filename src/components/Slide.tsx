@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import classNames from "classnames";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
@@ -61,21 +62,17 @@ export function Slide() {
       <>
         <PageTitleHandler />
 
-        <AnimatedSlide status={status}>
-          <div className="slide__title-layout">
-            <div className="slide__title">
-              <h1>{frontmatter.title}</h1>
-            </div>
+        <AnimatedSlide className="slide__title-layout" status={status}>
+          <div className="slide__header">
+            <h1>{frontmatter.title}</h1>
 
-            <div className="slide__description">
-              <h2>{frontmatter.description}</h2>
-            </div>
-
-            <div
-              className="slide__content"
-              dangerouslySetInnerHTML={{ __html: html ?? "" }}
-            />
+            <h2>{frontmatter.description}</h2>
           </div>
+
+          <div
+            className="slide__content"
+            dangerouslySetInnerHTML={{ __html: html ?? "" }}
+          />
         </AnimatedSlide>
       </>
     );
@@ -86,20 +83,16 @@ export function Slide() {
       <PageTitleHandler />
 
       <AnimatedSlide status={status}>
-        <LongForm>
-          <div className="slide__title">
-            <h1>{frontmatter.title}</h1>
-          </div>
+        <div className="slide__header">
+          <h1>{frontmatter.title}</h1>
 
-          <div className="slide__description">
-            <h2>{frontmatter.description}</h2>
-          </div>
+          <h2>{frontmatter.description}</h2>
+        </div>
 
-          <div
-            className="slide__content"
-            dangerouslySetInnerHTML={{ __html: html ?? "" }}
-          />
-        </LongForm>
+        <div
+          className="slide__content"
+          dangerouslySetInnerHTML={{ __html: html ?? "" }}
+        />
       </AnimatedSlide>
     </>
   );
@@ -108,15 +101,17 @@ export function Slide() {
 function AnimatedSlide({
   status,
   children,
+  className,
 }: {
   status: Status;
   children: React.ReactNode;
+  className?: string;
 }) {
   if (status !== "loaded") return null;
 
   return (
     <motion.div
-      className="slide__animated-slide"
+      className={classNames("slide__animated-slide", className)}
       initial={{ y: -50, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
     >

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BsChevronRight, BsChevronLeft } from "react-icons/bs";
 import { Outlet, Link, useParams, useNavigate } from "react-router-dom";
 import { useKeyPress } from "../hooks/useKeyPress";
 import { SLIDE_ROUTES } from "../constants";
@@ -36,7 +37,7 @@ export function Slideshow() {
       <div className="slideshow__links">
         {hasPrev ? (
           <Link className="slideshow__prev" to={prevPath}>
-            Previous slide
+            <BsChevronLeft />
           </Link>
         ) : (
           <div />
@@ -44,7 +45,7 @@ export function Slideshow() {
 
         {hasNext ? (
           <Link className="slideshow__next" to={nextPath}>
-            Next slide
+            <BsChevronRight />
           </Link>
         ) : (
           <div />
