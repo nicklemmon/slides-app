@@ -1,3 +1,102 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /* fonts */
+  --font-family-primary: "Space Grotesk", sans-serif;
+  --font-family-mono: monospace;
+
+  /* spacing */
+  --spacing-2xs: 0.125rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+  --spacing-2xl: 8rem;
+
+  /* border-radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: 18px;
+}
+
+code {
+  font-family: var(--font-family-mono);
+}
+
+pre.hljs {
+  line-height: 1.5;
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+}
+
+ul,
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+ul {
+  list-style-type: square;
+}
+
+p code,
+li code {
+  opacity: 0.85;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3.815rem;
+}
+
+h2 {
+  font-size: 3.052rem;
+  opacity: 0.85;
+}
+
+h3 {
+  font-size: 2.441rem;
+}
+
+h4 {
+  font-size: 1.953rem;
+}
+
+h5 {
+  font-size: 1.563em;
+}
+
+h6 {
+  font-size: 1.25em;
+}
+
+.slideshow {
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  width: 100vw;
+  height: 100vh;
+}
+
+.long-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}

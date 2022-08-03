@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
+import { LongForm } from "./Longform";
 
 type Layout = "default" | "title";
 
@@ -45,7 +46,9 @@ export function Slide() {
           const doc = domParser.parseFromString(markdown.html, "text/html");
 
           setFrontmatter(markdown?.attributes ? markdown.attributes : {});
-          setHtml(doc.documentElement.innerHTML);
+          setHtml(
+            `<div class="long-form">${doc.documentElement.innerHTML}</div>`
+          );
         }
       );
     }
@@ -59,15 +62,20 @@ export function Slide() {
         <PageTitleHandler />
 
         <AnimatedSlide status={status}>
-          <div>
-            <h1>{frontmatter.title}</h1>
-          </div>
+          <div className="slide__title-layout">
+            <div className="slide__title">
+              <h1>{frontmatter.title}</h1>
+            </div>
 
-          <div>
-            <h2>{frontmatter.description}</h2>
-          </div>
+            <div className="slide__description">
+              <h2>{frontmatter.description}</h2>
+            </div>
 
-          <div dangerouslySetInnerHTML={{ __html: html ?? "" }} />
+            <div
+              className="slide__content"
+              dangerouslySetInnerHTML={{ __html: html ?? "" }}
+            />
+          </div>
         </AnimatedSlide>
       </>
     );
@@ -78,11 +86,20 @@ export function Slide() {
       <PageTitleHandler />
 
       <AnimatedSlide status={status}>
-        <div>
-          <h1>{frontmatter.title}</h1>
-        </div>
+        <LongForm>
+          <div className="slide__title">
+            <h1>{frontmatter.title}</h1>
+          </div>
 
-        <div dangerouslySetInnerHTML={{ __html: html ?? "" }} />
+          <div className="slide__description">
+            <h2>{frontmatter.description}</h2>
+          </div>
+
+          <div
+            className="slide__content"
+            dangerouslySetInnerHTML={{ __html: html ?? "" }}
+          />
+        </LongForm>
       </AnimatedSlide>
     </>
   );
@@ -98,7 +115,11 @@ function AnimatedSlide({
   if (status !== "loaded") return null;
 
   return (
-    <motion.div initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+    <motion.div
+      className="slide__animated-slide"
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+    >
       {children}
     </motion.div>
   );

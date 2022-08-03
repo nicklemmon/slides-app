@@ -30,13 +30,27 @@ export function Slideshow() {
   }, [arrowLeftPressed]);
 
   return (
-    <>
+    <div className="slideshow">
       <Outlet />
 
-      {hasPrev ? <Link to={prevPath}>Previous slide</Link> : <div />}
+      <div className="slideshow__links">
+        {hasPrev ? (
+          <Link className="slideshow__prev" to={prevPath}>
+            Previous slide
+          </Link>
+        ) : (
+          <div />
+        )}
 
-      {hasNext ? <Link to={nextPath}>Next slide</Link> : <div />}
-    </>
+        {hasNext ? (
+          <Link className="slideshow__next" to={nextPath}>
+            Next slide
+          </Link>
+        ) : (
+          <div />
+        )}
+      </div>
+    </div>
   );
 }
 
