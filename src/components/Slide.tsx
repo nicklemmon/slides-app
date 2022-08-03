@@ -3,7 +3,6 @@ import classNames from "classnames";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { LongForm } from "./Longform";
 
 type Layout = "default" | "title";
 
