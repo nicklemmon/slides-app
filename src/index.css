@@ -161,6 +161,7 @@ h6 {
 
 .slide__content {
   padding-top: var(--spacing-lg);
+  padding-bottom: var(--spacing-lg);
 }
 
 .slide__animated-slide {

@@ -30,7 +30,7 @@ export function Slide() {
   const PageTitleHandler = () => {
     return (
       <Helmet>
-        <title>{frontmatter.title} | TWC Slides</title>
+        <title>{frontmatter.title} | Slides</title>
       </Helmet>
     );
   };
