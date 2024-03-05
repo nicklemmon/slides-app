@@ -14,7 +14,7 @@ type FrontmatterState = {
 
 type Status = "loading" | "loaded";
 
-export function Slide() {
+export function SlideRoute() {
   const [frontmatter, setFrontmatter] = useState<FrontmatterState>({
     title: "",
     description: "",

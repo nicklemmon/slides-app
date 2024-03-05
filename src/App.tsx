@@ -1,6 +1,8 @@
 import { Outlet, useRoutes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { Slide, Slideshow, SlideshowList } from "./components";
+import { SlideRoute } from "./routes/SlideRoute";
+import { SlideshowRoute } from "./routes/SlideShowRoute";
+import { SlideShowListRoute } from "./routes/SlideShowListRoute";
 
 function App() {
   return <AppContent />;
@@ -14,15 +16,15 @@ function AppContent() {
       children: [
         {
           index: true,
-          element: <SlideshowList />,
+          element: <SlideShowListRoute />,
         },
         {
           path: "/slides/:slideShowId",
-          element: <Slideshow />,
+          element: <SlideshowRoute />,
           children: [
             {
               path: "/slides/:slideShowId/:slideId",
-              element: <Slide />,
+              element: <SlideRoute />,
             },
           ],
         },
