@@ -65,7 +65,7 @@ export function SlideRoute() {
           <div className="slide__header">
             <h1>{frontmatter.title}</h1>
 
-            <h2>{frontmatter.description}</h2>
+            <h4>{frontmatter.description}</h4>
           </div>
 
           <div
@@ -85,7 +85,7 @@ export function SlideRoute() {
         <div className="slide__header">
           <h1>{frontmatter.title}</h1>
 
-          <h2>{frontmatter.description}</h2>
+          <h4>{frontmatter.description}</h4>
         </div>
 
         <div
